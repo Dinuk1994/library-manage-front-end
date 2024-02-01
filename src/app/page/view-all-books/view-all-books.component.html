@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Category</th>
+        <th scope="col">Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of bookList">
+        <td>#BN{{book.id}}</td>
+        <td>{{book.isbn}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.category}}</td>
+        <td>{{book.qty}}</td>
+      </tr>
+    </tbody>
+  </table>
