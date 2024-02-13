@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewAllBooksComponent implements OnInit {
   private http: any;
-  public bookList: any = {};
-  public selectedBook: any;
+  public bookList: any = [];
+  public selectedBook: any = ;
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -32,7 +32,7 @@ export class ViewAllBooksComponent implements OnInit {
   }
 
   deleteBook(){
-      this.httpClient.delete(`http://localhost:8080/book/${this.selectedBook.id}`,{responseType :'text'}).subscribe((response: string)=>{
+      this.http.delete(`http://localhost:8080/book/${this.selectedBook.id}`,{responseType :'text'}).subscribe((response: string)=>{
       console.log(response);
       this.loadBooks();
       this.selectedBook=null;
@@ -43,6 +43,14 @@ export class ViewAllBooksComponent implements OnInit {
 
   setSelectedBook(book: any) {
     this.selectedBook = book;
+  }
+
+  saveBook(){
+    this.http.post('http://localhost:8080/book/add',this.selectedBook).subscribe((data:any)=>{
+      console.log("saved!");
+      this.loadBooks();
+      this.selectedBook=null;
+    });
   }
 }
 
