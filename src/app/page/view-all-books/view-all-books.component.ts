@@ -32,8 +32,7 @@ export class ViewAllBooksComponent implements OnInit {
   }
 
   deleteBook(){
-    const bookId = this.selectedBook.id;
-    this.httpClient.delete(`http://localhost:8080/book/${bookId}`,{responseType :'text'}).subscribe((response: string)=>{
+      this.httpClient.delete(`http://localhost:8080/book/${this.selectedBook.id}`,{responseType :'text'}).subscribe((response: string)=>{
       console.log(response);
       this.loadBooks();
       this.selectedBook=null;
@@ -44,8 +43,6 @@ export class ViewAllBooksComponent implements OnInit {
 
   setSelectedBook(book: any) {
     this.selectedBook = book;
-    console.log("this.selectedBook" + book.id);
-
   }
 }
 
