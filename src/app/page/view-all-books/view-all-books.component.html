@@ -59,11 +59,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-         Do you want to update "{{selectedBook?.name}}" Book ?
+         Do you want to update Book ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="saveBook()">Confirm</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveBook()">Confirm</button>
         </div>
       </div>
     </div>

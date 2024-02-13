@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-all-books',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ViewAllBooksComponent implements OnInit {
   private http: any;
   public bookList: any = [];
-  public selectedBook: any = ;
+  public selectedBook: any;
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -36,6 +37,11 @@ export class ViewAllBooksComponent implements OnInit {
       console.log(response);
       this.loadBooks();
       this.selectedBook=null;
+      Swal.fire({
+        title: "Deleted!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
       
     });
   
@@ -49,6 +55,11 @@ export class ViewAllBooksComponent implements OnInit {
     this.http.post('http://localhost:8080/book/add',this.selectedBook).subscribe((data:any)=>{
       console.log("saved!");
       this.loadBooks();
+      Swal.fire({
+        title: "Updated Successfully!",
+        text: "You clicked the button!",
+        icon: "success"
+      });
       this.selectedBook=null;
     });
   }
