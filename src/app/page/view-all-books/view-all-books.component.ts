@@ -36,13 +36,13 @@ export class ViewAllBooksComponent implements OnInit {
       this.http.delete(`http://localhost:8080/book/${this.selectedBook.id}`,{responseType :'text'}).subscribe((response: string)=>{
       console.log(response);
       this.loadBooks();
-      this.selectedBook=null;
+      
       Swal.fire({
         title: "Deleted!",
-        text: "You clicked the button!",
+        text: `${this.selectedBook.name} is Deleted`,
         icon: "success"
       });
-      
+      this.selectedBook=null;
     });
   
   }
